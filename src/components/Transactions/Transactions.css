@@ -1,0 +1,263 @@
+/* ─── Transactions Page ─── */
+.transactions-page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.transactions-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.transactions-header h2 {
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.add-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: 0.625rem 1.25rem;
+  background: var(--accent);
+  color: white;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  transition: all var(--transition-fast);
+  box-shadow: 0 2px 8px var(--accent-glow);
+}
+
+.add-btn:hover {
+  background: var(--accent-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px var(--accent-glow);
+}
+
+/* ─── Filter Bar ─── */
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+  padding: var(--space-lg);
+}
+
+.filter-bar .search-input {
+  flex: 1;
+  min-width: 200px;
+  position: relative;
+}
+
+.filter-bar .search-input input {
+  padding-left: 2.5rem;
+}
+
+.filter-bar .search-input .search-icon {
+  position: absolute;
+  left: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-tertiary);
+  pointer-events: none;
+}
+
+.filter-group {
+  min-width: 140px;
+}
+
+.filter-group label {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 4px;
+}
+
+.clear-filters-btn {
+  align-self: flex-end;
+  padding: 0.625rem 1rem;
+  background: var(--bg-input);
+  color: var(--text-secondary);
+  border-radius: var(--radius-sm);
+  font-weight: 500;
+  transition: all var(--transition-fast);
+}
+
+.clear-filters-btn:hover {
+  background: var(--danger-bg);
+  color: var(--danger);
+}
+
+/* ─── Transaction Table ─── */
+.transaction-table-wrapper {
+  overflow-x: auto;
+}
+
+.transaction-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.transaction-table thead th {
+  padding: 0.875rem var(--space-lg);
+  text-align: left;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-bottom: 1px solid var(--border-color);
+  cursor: pointer;
+  user-select: none;
+  transition: color var(--transition-fast);
+  white-space: nowrap;
+}
+
+.transaction-table thead th:hover {
+  color: var(--text-primary);
+}
+
+.transaction-table thead th.sorted {
+  color: var(--accent);
+}
+
+.sort-icon {
+  margin-left: 4px;
+  display: inline-flex;
+  vertical-align: middle;
+}
+
+.transaction-table tbody td {
+  padding: 0.875rem var(--space-lg);
+  border-bottom: 1px solid var(--border-color);
+  font-size: 0.875rem;
+}
+
+.transaction-table tbody tr {
+  transition: background var(--transition-fast);
+}
+
+.transaction-table tbody tr:hover {
+  background: var(--bg-card);
+}
+
+.tx-description {
+  font-weight: 500;
+}
+
+.tx-amount {
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.tx-amount.income { color: var(--success); }
+.tx-amount.expense { color: var(--danger); }
+
+.tx-actions {
+  display: flex;
+  gap: var(--space-sm);
+}
+
+.tx-action-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-input);
+  color: var(--text-secondary);
+  transition: all var(--transition-fast);
+}
+
+.tx-action-btn:hover {
+  background: var(--accent-glow);
+  color: var(--accent);
+}
+
+.tx-action-btn.delete:hover {
+  background: var(--danger-bg);
+  color: var(--danger);
+}
+
+/* ─── Pagination ─── */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-lg);
+}
+
+.pagination button {
+  padding: 0.5rem 0.875rem;
+  border-radius: var(--radius-sm);
+  background: var(--bg-input);
+  color: var(--text-secondary);
+  font-weight: 500;
+  transition: all var(--transition-fast);
+}
+
+.pagination button:hover:not(:disabled) {
+  background: var(--accent-glow);
+  color: var(--accent);
+}
+
+.pagination button.active {
+  background: var(--accent);
+  color: white;
+}
+
+.pagination button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.pagination .page-info {
+  font-size: 0.8rem;
+  color: var(--text-tertiary);
+  padding: 0 var(--space-sm);
+}
+
+/* ─── Export ─── */
+.export-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: 0.625rem 1rem;
+  background: var(--bg-input);
+  color: var(--text-secondary);
+  border-radius: var(--radius-md);
+  font-weight: 500;
+  transition: all var(--transition-fast);
+}
+
+.export-btn:hover {
+  background: var(--success-bg);
+  color: var(--success);
+}
+
+/* ─── Responsive ─── */
+@media (max-width: 768px) {
+  .filter-bar {
+    flex-direction: column;
+  }
+  
+  .filter-bar .search-input {
+    min-width: 100%;
+  }
+  
+  .transactions-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-md);
+  }
+  
+  .transaction-table thead th,
+  .transaction-table tbody td {
+    padding: 0.75rem var(--space-md);
+  }
+}

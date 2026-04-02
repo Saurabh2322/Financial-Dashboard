@@ -1,0 +1,219 @@
+/* ─── Dashboard Grid ─── */
+.dashboard-page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+}
+
+.summary-cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-lg);
+}
+
+.summary-card {
+  padding: var(--space-lg);
+  position: relative;
+  overflow: hidden;
+  opacity: 0;
+  animation: fadeIn 0.5s ease forwards;
+}
+
+.summary-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+}
+
+.summary-card.balance::before { background: linear-gradient(90deg, #6366f1, #a855f7); }
+.summary-card.income::before { background: linear-gradient(90deg, #10b981, #34d399); }
+.summary-card.expenses::before { background: linear-gradient(90deg, #ef4444, #f97316); }
+.summary-card.savings::before { background: linear-gradient(90deg, #06b6d4, #0ea5e9); }
+
+.card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-md);
+}
+
+.card-header .card-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-icon.balance { background: rgba(99,102,241,0.15); color: #818cf8; }
+.card-icon.income { background: var(--success-bg); color: var(--success); }
+.card-icon.expenses { background: var(--danger-bg); color: var(--danger); }
+.card-icon.savings { background: var(--info-bg); color: var(--info); }
+
+.card-label {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.card-value {
+  font-size: 1.75rem;
+  font-weight: 800;
+  margin-bottom: var(--space-xs);
+  animation: countUp 0.6s ease forwards;
+}
+
+.card-trend {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+}
+
+.card-trend.up {
+  color: var(--success);
+  background: var(--success-bg);
+}
+
+.card-trend.down {
+  color: var(--danger);
+  background: var(--danger-bg);
+}
+
+/* ─── Charts Grid ─── */
+.charts-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: var(--space-lg);
+}
+
+.chart-card {
+  padding: var(--space-lg);
+  opacity: 0;
+  animation: fadeIn 0.6s ease forwards;
+  animation-delay: 0.2s;
+}
+
+.chart-card h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: var(--space-lg);
+  color: var(--text-primary);
+}
+
+/* ─── Recent Transactions ─── */
+.recent-transactions {
+  opacity: 0;
+  animation: fadeIn 0.6s ease forwards;
+  animation-delay: 0.35s;
+}
+
+.recent-transactions .card-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-lg);
+  padding: var(--space-lg) var(--space-lg) 0;
+}
+
+.recent-transactions .card-header-row h3 {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.view-all-btn {
+  background: transparent;
+  color: var(--accent);
+  font-weight: 600;
+  font-size: 0.8rem;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  transition: all var(--transition-fast);
+}
+
+.view-all-btn:hover {
+  color: var(--accent-hover);
+}
+
+.recent-list {
+  list-style: none;
+}
+
+.recent-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.875rem var(--space-lg);
+  border-top: 1px solid var(--border-color);
+  transition: background var(--transition-fast);
+}
+
+.recent-item:hover {
+  background: var(--bg-card);
+}
+
+.recent-item-left {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.recent-item-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+}
+
+.recent-item-info h4 {
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.recent-item-info span {
+  font-size: 0.75rem;
+  color: var(--text-tertiary);
+}
+
+.recent-item-amount {
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.recent-item-amount.income { color: var(--success); }
+.recent-item-amount.expense { color: var(--danger); }
+
+/* ─── Responsive ─── */
+@media (max-width: 1024px) {
+  .summary-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .charts-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .summary-cards {
+    grid-template-columns: 1fr;
+  }
+  
+  .card-value {
+    font-size: 1.5rem;
+  }
+}
